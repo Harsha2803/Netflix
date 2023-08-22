@@ -1,17 +1,16 @@
 import React, { useCallback } from 'react';
 import { useRouter } from 'next/router';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
 import { PlayIcon } from '@heroicons/react/24/solid';
 
 import { MovieInterface } from '@/types';
 import FavoriteButton from '@/components/FavoriteButton';
 import useInfoModalStore from '@/hooks/useInfoModalStore';
 
-interface MovieCardProps {
+interface SearchResultProps {
   data: MovieInterface;
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
+const SearchResult: React.FC<SearchResultProps> = ({ data }) => {
   const router = useRouter();
   const { openModal } = useInfoModalStore();
 
@@ -29,7 +28,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         group-hover:opacity-90
         sm:group-hover:opacity-0
         delay-300
-        w-full
+        w-60
         h-[12vw]
       " />
       <div className="
@@ -42,7 +41,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
         invisible
         sm:visible
         delay-300
-        w-full
+        w-50
         scale-0
         group-hover:scale-110
         group-hover:-translate-y-[6vw]
@@ -75,9 +74,6 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
               <PlayIcon className="text-black w-4 lg:w-6" />
             </div>
             <FavoriteButton movieId={data.id} />
-            <div onClick={() => openModal(data?.id)} className="cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300">
-              <ChevronDownIcon className="text-white group-hover/item:text-neutral-300 w-4 lg:w-6" />
-            </div>
           </div>
           <p className="text-green-400 font-semibold mt-4">
             New <span className="text-white">2023</span>
@@ -94,4 +90,4 @@ const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   )
 }
 
-export default MovieCard;
+export default SearchResult;

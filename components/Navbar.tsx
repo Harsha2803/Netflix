@@ -55,9 +55,11 @@ const Navbar = () => {
           <MobileMenu visible={showMobileMenu} />
         </div>
         <div className="flex flex-row ml-auto gap-7 items-center">
-          <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
+        <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
+        <a href="/search">
             <MagnifyingGlassIcon className="w-6" />
-          </div>
+        </a>
+      </div>
           <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
             <BellIcon className="w-6" />
           </div>
