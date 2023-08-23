@@ -5,6 +5,7 @@ import MovieList from '@/components/MovieList';
 import useMovieList from '@/hooks/useMovieList';
 import useFavorites from '@/hooks/useFavorites';
 import SearchResult from '@/components/SearchResult';
+import Navbar from '@/components/Navbar';
 
 const SearchPage = () => {
     const {
@@ -39,28 +40,30 @@ const SearchPage = () => {
     }, [handleSearch]);
 
     return (
-        <div className="py-5 px-4">
-            <h1 className="text-red-500 text-2xl font-bold mb-4">Search Results</h1>
-            <input
-                type="text"
-                placeholder="Search by name..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full border p-2 rounded"
-            />
-            <div className="mt-4">
-                {searchResults.length === 0 ? (
-                    <p className="text-red-500">Uh-oh! No results found.</p>
-                ) : (
-                    searchResults.map((result) => (
-                        // <MovieList title="Results" data={result} />
-                        <SearchResult key={result.id} data={result} />
-                    ))
-                )}
+        <>
+            <Navbar/>
+            <div className='w-full p-2 relative py-20'>
+                <h1 className="text-red-500 text-2xl font-bold">Search Netflix</h1>
+                <input
+                    type="text"
+                    placeholder="Search by Name..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full mt-4 border p-1 rounded"
+                    />
+                <div className='grid grid-cols-3 gap-2 '>
+                    {searchResults.length === 0 ? (
+                        <p className="text-red-500 mt-1">Uh-oh! No results found.</p>
+                        ) : (
+                            searchResults.map((result) => (
+                                <SearchResult key={result.id} data={result} />
+                                ))
+                                )}  
+                </div>
+                <MovieList title="Trending Now" data={movies} />
+                <MovieList title="My List" data={favorites} />
             </div>
-            <MovieList title="Trending Now" data={movies} />
-            <MovieList title="My List" data={favorites} />
-        </div>
+        </>
     );
 };
 
