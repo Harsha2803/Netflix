@@ -42,7 +42,7 @@ const SearchPage = () => {
     return (
         <>
             <Navbar/>
-            <div className='w-full p-2 relative py-20'>
+            <div className='w-full p-10 relative py-20'>
                 <h1 className="text-red-500 text-2xl font-bold">Search Netflix</h1>
                 <input
                     type="text"
