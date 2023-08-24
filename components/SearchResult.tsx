@@ -6,6 +6,7 @@ import { MovieInterface } from '@/types';
 import FavoriteButton from '@/components/FavoriteButton';
 import useInfoModalStore from '@/hooks/useInfoModalStore';
 
+// creating interface for Search Results
 interface SearchResultProps {
   data: MovieInterface;
 }
